@@ -1,0 +1,12 @@
+---
+- name: Docker入りサーバの立ち上げ
+  hosts: all
+  become: true
+  tasks:
+  - name: install docker
+    yum: name=docker state=present
+  - name: enable service docker
+    systemd:
+      name: docker
+      enabled: yes
+      state: started
